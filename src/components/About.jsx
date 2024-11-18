@@ -11,11 +11,11 @@ import Mission3 from "../assets/about-mission (2).webp"
 const About = () => {
     return (
         <div className="py-6 ">
-            <h2 className="w-7/12 mx-auto text-center text-2xl lg:text-3xl font-bold -10 mb-4">About Our Winter Clothing Donation</h2>
+            <h2 className="w-7/12 mx-auto text-center text-purple-600 text-2xl lg:text-3xl font-bold -10 mb-4">About Our Winter Clothing Donation</h2>
             <p className="lg:w-7/12 mx-auto text-center px-6">Winter Clothes Campaign is dedicated to ensuring everyone stays warm during the coldest months. Our mission is to provide winter clothing to families and individuals who cannot afford it. Millions face the bitter cold without proper clothing, risking their health and even their lives. But you can help change that!</p>
 
             <div className="">
-                <h2 className="text-2xl font-bold text-center mt-6 mb-3">Donate winter clothes</h2>
+                <h2 className="text-2xl font-bold mt-6 mb-3 ml-16 text-green-500">Donate winter clothes</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-3 mx-12">
                     <div className="card bg-base-100 shadow-xl p-4">
@@ -31,7 +31,7 @@ const About = () => {
             </div>
 
             <div className="">
-                <h2 className="text-2xl font-bold text-center mt-6 mb-3">Volunteers help us collect and distribute</h2>
+                <h2 className="text-2xl font-bold mt-6 mb-3 ml-16 text-green-500">Volunteers help us collect and distribute</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-3 mx-12">
                     <div className="card bg-base-100 shadow-xl p-4">
@@ -47,7 +47,7 @@ const About = () => {
             </div>
 
             <div className="">
-                <h2 className="text-2xl font-bold text-center mt-6 mb-3 mx-10">Share our mission with your friends and family.</h2>
+                <h2 className="text-2xl font-bold mt-6 mb-3 mx-10 ml-16 text-green-500">Share our mission with your friends and family.</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-3 mx-12">
                     <div className="card bg-base-100 shadow-xl p-4">

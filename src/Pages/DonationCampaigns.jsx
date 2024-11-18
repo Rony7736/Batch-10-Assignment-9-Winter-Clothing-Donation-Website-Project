@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import DonateCards from "./DonateCards";
+import DonateCards from "../components/DonateCards";
 
 const DonationCampaigns = () => {
     return (
