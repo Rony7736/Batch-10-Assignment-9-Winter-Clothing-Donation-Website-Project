@@ -5,13 +5,13 @@ import Footer from "../components/Footer";
 const MainLayout = () => {
     return (
         <div>
-            <div className="w-11/12 mx-auto">
+            <div className="lg:w-[1440px] mx-auto">
                 <Navbar></Navbar>
             </div>
-            <div className="w-11/12 mx-auto">
+            <div className="lg:w-[1440px] mx-auto bg-[#F9F9F9]">
                 <Outlet></Outlet>
             </div>
-            <div className="w-11/12 mx-auto">
+            <div className="lg:w-[1440px] mx-auto">
                 <Footer></Footer>
             </div>
         </div>

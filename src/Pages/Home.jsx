@@ -1,8 +1,11 @@
+import About from "../components/About";
+import Banner from "../components/Banner";
 
 const Home = () => {
     return (
         <div className="">
-            this is home
+            <Banner></Banner>
+            <About></About>
         </div>
     );
 };

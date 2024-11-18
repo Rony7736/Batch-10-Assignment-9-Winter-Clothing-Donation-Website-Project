@@ -37,7 +37,7 @@ const Footer = () => {
                         </div>
 
                         <div className='mb-6'>
-                            <h1 className='mb-6 text-white text-lg'>Contact Us</h1>
+                            <h1 className='mb-6 text-white text-lg mt-5 lg:mt-0'>Contact Us</h1>
 
                             <div className="flex flex-col gap-3">
                                 <input className='py-3 pl-3 rounded-xl' type="text" placeholder='Enter your Name' name="" id="" />
