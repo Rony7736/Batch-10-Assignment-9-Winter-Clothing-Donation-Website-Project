@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Dhaka Winter Relief",
+    "image": "https://i.ibb.co.com/1fBfqdK/01.webp",
+    "description": "Providing warm clothes to slum dwellers in Dhaka.",
+    "status": "Ongoing",
+    "contactInfo": "dhakarelief@gmail.com",
+    "division": "Dhaka"
+  },
+  {
+    "id": 2,
+    "title": "Chattogram Warmth Drive",
+    "image": "https://i.ibb.co.com/f9v2r5K/02.jpg",
+    "description": "Distributing winter clothing to fishermen and rural families.",
+    "status": "Completed",
+    "contactInfo": "chattogramdrive@gmail.com",
+    "division": "Chattogram"
+  },
+  {
+    "id": 3,
+    "title": "Sylhet Cozy Care",
+    "image": "https://i.ibb.co.com/mykxmdx/03.jpg",
+    "description": "Helping tea garden workers and their families with winter wear.",
+    "status": "Ongoing",
+    "contactInfo": "sylhetcare@yahoo.com",
+    "division": "Sylhet"
+  },
+  {
+    "id": 4,
+    "title": "Rajshahi Blanket Drive",
+    "image": "https://i.ibb.co.com/zRVS64p/04.jpg",
+    "description": "Donating blankets to rural communities in Rajshahi.",
+    "status": "Upcoming",
+    "contactInfo": "rajshaiblanket@outlook.org",
+    "division": "Rajshahi"
+  },
+  {
+    "id": 5,
+    "title": "Khulna Warm Hearts",
+    "image": "https://i.ibb.co.com/zZQX4mp/05.jpg",
+    "description": "Providing winter clothes for riverine communities.",
+    "status": "Ongoing",
+    "contactInfo": "khulnahearts@outlook.com",
+    "division": "Khulna"
+  },
+  {
+    "id": 6,
+    "title": "Barishal Warmth Initiative",
+    "image": "https://i.ibb.co.com/hV8rmpf/06.jpg",
+    "description": "Ensuring warm clothes for children in flood-prone areas.",
+    "status": "Completed",
+    "contactInfo": "barishalinitiative@gmail.com",
+    "division": "Barishal"
+  },
+  {
+    "id": 7,
+    "title": "Mymensingh Winter Aid",
+    "image": "https://i.ibb.co.com/ZGK7d3y/07.jpg",
+    "description": "Supporting low-income families with warm clothes in Mymensingh.",
+    "status": "Ongoing",
+    "contactInfo": "mymensinghaid@yahoo.com",
+    "division": "Mymensingh"
+  },
+  {
+    "id": 8,
+    "title": "Rangpur Chill Relief",
+    "image": "https://i.ibb.co.com/5L0YnvN/08.jpg",
+    "description": "Helping marginalized communities with warm blankets.",
+    "status": "Ongoing",
+    "contactInfo": "rangpurrelief@hotmail.com",
+    "division": "Rangpur"
+  },
+  {
+    "id": 9,
+    "title": "Dhaka Urban Winter Drive",
+    "image": "https://i.ibb.co.com/y0k5cG8/09.jpg",
+    "description": "Winter clothing for rickshaw pullers and street vendors in Dhaka.",
+    "status": "Upcoming",
+    "contactInfo": "urbanwinter@hotmail.com",
+    "division": "Dhaka"
+  },
+  {
+    "id": 10,
+    "title": "Chattogram Coastal Care",
+    "image": "https://i.ibb.co.com/TgBSCYC/10.jpg",
+    "description": "Winter supplies for coastal families vulnerable to cold winds.",
+    "status": "Completed",
+    "contactInfo": "coastalcare@yahoo.com",
+    "division": "Chattogram"
+  }
+]
