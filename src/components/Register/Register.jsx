@@ -1,20 +1,28 @@
-import { NavLink } from "react-router-dom";
+
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import register from "../../assets/register.avif"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { authContext } from "../../AuthProvider/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
 
 const Register = () => {
 
     const contextData = useContext(authContext)
     const { handleRegister, setUser } = contextData
 
+    const [error, setError] = useState({})
 
-    // const [error, setError] = useState("")
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = new FormData(e.target)
         const name = form.get("name")
+        if (name.length < 4) {
+            setError({ ...error, name: "must be more then 4 chatracter long" })
+            return;
+        }
         const email = form.get("email")
         const image = form.get("image")
         const password = form.get("password")
@@ -25,6 +33,7 @@ const Register = () => {
                 const user = result.user
                 setUser(user)
                 console.log(user)
+                navigate(location && "/")
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -52,6 +61,13 @@ const Register = () => {
                                 </label>
                                 <input type="text" placeholder="name" name="name" className="input input-bordered" required />
                             </div>
+                            {
+                                error.name && 
+                                <label className="label text-xs text-red-600">
+                                    {error.name}
+                                </label>
+                            }
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -74,10 +90,16 @@ const Register = () => {
                             </div>
 
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Register</button>
+                                <button className="btn btn-neutral w-60 mx-auto">Register</button>
                             </div>
-                            <p>Already Have An Account? Please <NavLink to="/login" className="underline text-red-500">Login</NavLink></p>
+
                         </form>
+
+                        <div className="flex justify-center">
+                            <button className="btn btn-neutral w-60 mx-auto"><FaGoogle size={20}></FaGoogle>Login with Google</button>
+                        </div>
+
+                        <p className="p-6 text-center">Already Have An Account? Please <NavLink to="/login" className="underline text-red-500">Login</NavLink></p>
 
                     </div>
 

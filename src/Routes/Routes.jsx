@@ -9,6 +9,7 @@ import Details from "../Details";
 import 'animate.css';
 import Register from "../components/Register/Register";
 import Login from "../components/Login/Login";
+import PrivateRoute from "./PrivateRoute";
 // import { WOW } from 'wowjs';
 
 
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <Details></Details>,
+        element: <PrivateRoute><Details></Details></PrivateRoute>,
         loader: async ({ params }) => {
           const res = await fetch("/donation.json")
           const data = await res.json()

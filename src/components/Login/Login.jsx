@@ -1,12 +1,19 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import login from "../../assets/login.avif"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { authContext } from "../../AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
 
+import { FaGoogle } from "react-icons/fa";
+
 const Login = () => {
 
-    const {setUser, handleLogin} = useContext(authContext)
+    const { setUser, handleLogin } = useContext(authContext)
+
+    const [error, setError] = useState({})
+
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -17,15 +24,17 @@ const Login = () => {
         // console.log({email, password});
 
         handleLogin(email, password)
-        .then(result => {
-            const user = result.user
-            setUser(user)
-            // console.log(user)
-        })
-        .catch((error) => {
-            const errorMessage = error.message;
-            toast.error(errorMessage)
-        });
+            .then(result => {
+                const user = result.user
+                setUser(user)
+                // console.log(user)
+                navigate(location?.state ? location.state : "/")
+            })
+            .catch((err) => {
+                const errorMessage = err.message;
+                setError({ ...error, login: err.message })
+                toast.error(errorMessage)
+            });
     }
 
     return (
@@ -50,15 +59,29 @@ const Login = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type="password" placeholder="password" name="password" className="input input-bordered" required />
+
+                                {
+                                    error.login && (
+                                        <label className="label text-sm text-red-600">
+                                            {error.login}
+                                        </label>)
+                                }
+
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    <a href="#" className="label-text-alt text-red-600 text-sm link link-hover">Forgot password?</a>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Login</button>
+                                <button className="btn btn-neutral w-60 mx-auto">Login</button>
+
                             </div>
-                            <p className="p-6">New to the website? Please <NavLink to="/register" className="underline text-red-500">Register</NavLink></p>
+
                         </form>
+
+                        <div className="flex justify-center">
+                            <button className="btn btn-neutral w-60 mx-auto"><FaGoogle size={20}></FaGoogle>Login with Google</button>
+                        </div>
+                        <p className="p-6 text-center">New to the website? Please <NavLink to="/register" className="underline text-red-500">Register</NavLink></p>
 
                     </div>
                 </div>
