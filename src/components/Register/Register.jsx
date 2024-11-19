@@ -4,11 +4,13 @@ import register from "../../assets/register.avif"
 import { useContext, useState } from "react";
 import { authContext } from "../../AuthProvider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const Register = () => {
 
     const contextData = useContext(authContext)
-    const { handleRegister, setUser } = contextData
+    const { handleRegister, setUser, updateUSerProfile } = contextData
+
 
     const [error, setError] = useState({})
 
@@ -32,12 +34,19 @@ const Register = () => {
             .then(result => {
                 const user = result.user
                 setUser(user)
-                console.log(user)
+                // console.log(user)
                 navigate(location && "/")
+                updateUSerProfile({displayName:name, photoURL:image})
+                .then(()=>{
+                    navigate("/")
+                })
+                .catch(err => {
+                    console.log(err)                    
+                })
             })
             .catch((error) => {
                 const errorMessage = error.message;
-                console.log(errorMessage)
+                toast.error(errorMessage)
             });
 
     }
