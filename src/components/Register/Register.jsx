@@ -1,12 +1,36 @@
 import { NavLink } from "react-router-dom";
 import register from "../../assets/register.avif"
+import { useContext } from "react";
+import { authContext } from "../../AuthProvider/AuthProvider";
 
 const Register = () => {
+
+    const contextData = useContext(authContext)
+    const { handleRegister, setUser } = contextData
+
 
     // const [error, setError] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        const form = new FormData(e.target)
+        const name = form.get("name")
+        const email = form.get("email")
+        const image = form.get("image")
+        const password = form.get("password")
+        // console.log({name, email, image, password});
+
+        handleRegister(email, password)
+            .then(result => {
+                const user = result.user
+                setUser(user)
+                console.log(user)
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage)
+            });
+
     }
 
     return (
@@ -52,7 +76,7 @@ const Register = () => {
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Register</button>
                             </div>
-                            <p>Already have an Account? Please <NavLink to="/login" className="underline text-red-500">Login</NavLink></p>
+                            <p>Already Have An Account? Please <NavLink to="/login" className="underline text-red-500">Login</NavLink></p>
                         </form>
 
                     </div>
