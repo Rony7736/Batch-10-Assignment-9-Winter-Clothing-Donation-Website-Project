@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 
 const DonationCard = ({ donationaCard }) => {
     // console.log(donationaCard);
@@ -11,18 +12,21 @@ const DonationCard = ({ donationaCard }) => {
 
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
-                <div className="flex justify-between">
+                {/* <div className="flex justify-between">
                     <span className="font-bold"> Status : </span>
                     <span className="badge bg-green-200 px-6 py-3 font-medium">{status}</span>
-                </div>
+                </div> */}
+                <p>Description: {description}</p>
 
                 <div className="flex justify-between items-center ">
                     <p className="font-bold">Division:</p>
                     <span className="font-medium">{division}</span>
                 </div>
-                <button className="btn btn-warning text-white font-bold text-lg mt-3">Donate Now</button>         
+                <NavLink to={`/details/${id}`}>
+                    <button className="btn btn-warning text-white font-bold text-lg mt-3">Donate Now</button>
+                </NavLink>
             </div>
-            
+
         </div>
     );
 };

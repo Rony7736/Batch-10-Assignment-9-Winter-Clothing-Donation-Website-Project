@@ -49,7 +49,7 @@ const Footer = () => {
 
                     </div>
 
-                    <p className='text-[#9B9DA3] mt-6'> &#64; 2024 Your Company All Rights Reserved.</p>
+                    <p className='text-[#9B9DA3] mt-6'> &#64; 2024 All Rights Reserved by Rony Chakrabarty.</p>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
 const Works = () => {
     return (
         <div className="pb-10">
-            <h2 className="text-3xl text-center text-purple-600 font-bold my-6">How It Works</h2>
+            <h2 className="WOW animate__animated animate__fadeInUp text-3xl text-center text-purple-600 font-bold my-6" data-wow-duration="3s" data-wow-delay="1s">How It Works</h2>
             <p className="text-center lg:w-7/12 lg:mx-auto mb-6 mx-10">We accept warm clothes, such as jackets, sweaters, shawls, blankets, and gloves, for children and adults. Ensure the clothes are clean and in good condition.</p>
 
             <div className="flex flex-col lg:flex-row justify-around gap-4 mx-10 mb-10">

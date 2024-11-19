@@ -8,10 +8,12 @@ import Mission from "../assets/about-mission (1).jpeg"
 import Mission2 from "../assets/about-mission (1).webp"
 import Mission3 from "../assets/about-mission (2).webp"
 
+
+
 const About = () => {
     return (
         <div className="py-6 ">
-            <h2 className="w-7/12 mx-auto text-center text-purple-600 text-2xl lg:text-3xl font-bold -10 mb-4">About Our Winter Clothing Donation</h2>
+            <h2 className="animate__animated animate__fadeInUp w-7/12 mx-auto text-center text-purple-600 text-2xl lg:text-3xl font-bold -10 mb-4">About Our Winter Clothing Donation</h2>
             <p className="lg:w-7/12 mx-auto text-center px-6">Winter Clothes Campaign is dedicated to ensuring everyone stays warm during the coldest months. Our mission is to provide winter clothing to families and individuals who cannot afford it. Millions face the bitter cold without proper clothing, risking their health and even their lives. But you can help change that!</p>
 
             <div className="">

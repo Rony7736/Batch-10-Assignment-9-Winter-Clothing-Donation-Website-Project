@@ -26,7 +26,7 @@ const Navbar = () => {
                         <NavLink to="/dashboard" className={({ isActive }) => `text-base ${isActive ? 'text-warning font-bold' : 'hover:text-warning'}`}><li>Dashboard</li></NavLink>
                     </ul>
                 </div>
-                <NavLink className="btn btn-ghost text-2xl">Winter Clothing  Donation</NavLink>
+                <NavLink to="/" className="btn btn-ghost text-2xl">Winter Clothing  Donation</NavLink>
             </div>
 
             <div className="navbar-center hidden lg:flex">
