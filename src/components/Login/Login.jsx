@@ -1,27 +1,35 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import login from "../../assets/login.avif"
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { authContext } from "../../AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
 
-import { FaGoogle } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
+import { sendPasswordResetEmail } from "firebase/auth";
+import auth from "../../Firebase/Firebase.config";
 
 const Login = () => {
 
     const { setUser, handleLogin } = useContext(authContext)
 
     const [error, setError] = useState({})
+    const [showPassword, setShowPassword] = useState(false)
+    const emailRef = useRef()
 
     const location = useLocation()
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        
 
         const form = new FormData(e.target)
         const email = form.get("email")
         const password = form.get("password")
         // console.log({email, password});
+
+        // reset error status
+        setError("")
 
         handleLogin(email, password)
             .then(result => {
@@ -35,6 +43,21 @@ const Login = () => {
                 setError({ ...error, login: err.message })
                 toast.error(errorMessage)
             });
+    }
+
+    const handleForgetPassword = () => {
+        // console.log("get me email", emailRef.current.value)
+        const email = emailRef.current.value
+        if (!email){
+            toast.error("Please Provide a Valid Email Address")
+        }
+        else{
+            sendPasswordResetEmail(auth, email)
+            .then(()=> {
+                toast.success("Password Reset email Sent, Please check your email")
+            })
+        }
+
     }
 
     return (
@@ -52,13 +75,19 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" placeholder="email" name="email" className="input input-bordered" required />
+                                <input type="email" placeholder="email" name="email" ref={emailRef} className="input input-bordered" required />
                             </div>
-                            <div className="form-control">
+                            <div className="form-control relative">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" placeholder="password" name="password" className="input input-bordered" required />
+                                <input type={showPassword ? "text" : "password"}
+                                    placeholder="password" name="password" className="input input-bordered" required />
+                                <button onClick={() => setShowPassword(!showPassword)} className=" btn-xs absolute right-4 top-12">
+                                    {
+                                        showPassword ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>
+                                    }
+                                </button>
 
                                 {
                                     error.login && (
@@ -67,7 +96,7 @@ const Login = () => {
                                         </label>)
                                 }
 
-                                <label className="label">
+                                <label onClick={handleForgetPassword} className="label">
                                     <a href="#" className="label-text-alt text-red-600 text-sm link link-hover">Forgot password?</a>
                                 </label>
                             </div>

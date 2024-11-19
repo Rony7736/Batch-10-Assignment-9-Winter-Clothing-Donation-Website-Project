@@ -5,14 +5,16 @@ import { useContext, useState } from "react";
 import { authContext } from "../../AuthProvider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { FaEye } from "react-icons/fa"
+import { FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
 
     const contextData = useContext(authContext)
     const { handleRegister, setUser, updateUSerProfile } = contextData
 
-
     const [error, setError] = useState({})
+    const [showPassword, setShowPassword] = useState(false)
 
     const location = useLocation()
     const navigate = useNavigate()
@@ -36,13 +38,13 @@ const Register = () => {
                 setUser(user)
                 // console.log(user)
                 navigate(location && "/")
-                updateUSerProfile({displayName:name, photoURL:image})
-                .then(()=>{
-                    navigate("/")
-                })
-                .catch(err => {
-                    console.log(err)                    
-                })
+                updateUSerProfile({ displayName: name, photoURL: image })
+                    .then(() => {
+                        navigate("/")
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -71,7 +73,7 @@ const Register = () => {
                                 <input type="text" placeholder="name" name="name" className="input input-bordered" required />
                             </div>
                             {
-                                error.name && 
+                                error.name &&
                                 <label className="label text-xs text-red-600">
                                     {error.name}
                                 </label>
@@ -91,15 +93,21 @@ const Register = () => {
                                 <input type="text" placeholder="photo url" name="image" className="input input-bordered" required />
                             </div>
 
-                            <div className="form-control">
+                            <div className="form-control relative">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" placeholder="Password" name="password" className="input input-bordered" required />
+                                <input type={showPassword ? "text" : "password"}
+                                    placeholder="Password" name="password" className="input input-bordered" required />
+                                <button onClick={() => setShowPassword(!showPassword)} className=" btn-xs absolute right-4 top-12">
+                                    {
+                                        showPassword ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>
+                                    }
+                                </button>
                             </div>
 
                             <div className="form-control mt-6">
-                                <button className="btn btn-neutral w-60 mx-auto">Register</button>
+                                <button type="submit" className="btn btn-neutral w-60 mx-auto">Register</button>
                             </div>
 
                         </form>
