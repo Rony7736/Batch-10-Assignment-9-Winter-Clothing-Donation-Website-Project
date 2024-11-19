@@ -1,10 +1,31 @@
 import { NavLink } from "react-router-dom";
 import login from "../../assets/login.avif"
+import { useContext } from "react";
+import { authContext } from "../../AuthProvider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Login = () => {
 
+    const {setUser, handleLogin} = useContext(authContext)
+
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        const form = new FormData(e.target)
+        const email = form.get("email")
+        const password = form.get("password")
+        // console.log({email, password});
+
+        handleLogin(email, password)
+        .then(result => {
+            const user = result.user
+            setUser(user)
+            // console.log(user)
+        })
+        .catch((error) => {
+            const errorMessage = error.message;
+            toast.error(errorMessage)
+        });
     }
 
     return (
@@ -22,13 +43,13 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" placeholder="email" className="input input-bordered" required />
+                                <input type="email" placeholder="email" name="email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" placeholder="password" className="input input-bordered" required />
+                                <input type="password" placeholder="password" name="password" className="input input-bordered" required />
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>

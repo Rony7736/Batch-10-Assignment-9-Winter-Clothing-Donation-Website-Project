@@ -6,19 +6,21 @@ export const authContext = createContext()
 
 const AuthProvider = ({ children }) => {
 
+    // step 1
     const [user, setUser] = useState(null)
     console.log(user);
 
-    // step 1
+    // step 2
     const handleRegister = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    // const handleLogin = (email, password) => {
-    //     return signInWithEmailAndPassword(auth, email, password)
-    // }
+    // step 5
+    const handleLogin = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
+    }
 
-    // step 3
+    // step 4
     const logOut = ()=> {
         return signOut(auth)
     }
@@ -28,12 +30,11 @@ const AuthProvider = ({ children }) => {
         user,
         setUser,
         handleRegister,
-        // handleLogin,
-        // loginUser,
+        handleLogin,
         logOut
     }
 
-    // step 2
+    // step 3
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currectUser) => {
             setUser(currectUser)
