@@ -7,6 +7,8 @@ import DonationCampaigns from "../Pages/DonationCampaigns";
 import Details from "../Details";
 
 import 'animate.css';
+import Register from "../components/Register/Register";
+import Login from "../components/Login/Login";
 // import { WOW } from 'wowjs';
 
 
@@ -41,9 +43,17 @@ const router = createBrowserRouter([
 
           const singleData = data.find(d => d.id == params.id)
           // console.log(singleData);
-          
+
           return singleData;
         }
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
       },
     ]
   },

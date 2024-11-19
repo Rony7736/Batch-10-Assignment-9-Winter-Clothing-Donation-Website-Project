@@ -1,6 +1,8 @@
-import { Link, NavLink } from "react-router-dom";
 
-const Navbar = () => {
+import { NavLink } from "react-router-dom";
+
+
+const Navbar = () => {   
 
     const links = <div className="flex justify-center items-center gap-6 font-bold text-lg">
         <NavLink to="/" className={({ isActive }) => `text-base ${isActive ? 'text-warning font-bold' : 'hover:text-warning'}`}><li>Home</li></NavLink>
@@ -37,7 +39,7 @@ const Navbar = () => {
 
             <div className="navbar-end gap-4 rounded-lg ">
                 <button className="btn btn-neutral rounded-none">Logout</button>
-                <Link to='/auth/login' className="btn btn-neutral rounded-none">Login</Link>
+                <NavLink to='/login' className="btn btn-neutral rounded-none">Login</NavLink>
             </div>
         </div>
     );
