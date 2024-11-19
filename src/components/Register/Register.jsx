@@ -11,7 +11,7 @@ import { FaEyeSlash } from "react-icons/fa";
 const Register = () => {
 
     const contextData = useContext(authContext)
-    const { handleRegister, setUser, updateUSerProfile } = contextData
+    const { handleRegister, setUser, updateUSerProfile, handleGoogleLogin } = contextData
 
     const [error, setError] = useState({})
     const [showPassword, setShowPassword] = useState(false)
@@ -30,7 +30,19 @@ const Register = () => {
         const email = form.get("email")
         const image = form.get("image")
         const password = form.get("password")
-        // console.log({name, email, image, password});
+         // console.log({name, email, image, password});
+
+        if(password.length < 6){
+            toast.error("Password should be 6 characters or longer")
+            return
+        }
+
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).+$/;
+        if(!passwordRegex.test(password)){
+            toast.error("Password at least one uppercase and one lowercase")
+            return
+        }
+       
 
         handleRegister(email, password)
             .then(result => {
@@ -50,8 +62,8 @@ const Register = () => {
                 const errorMessage = error.message;
                 toast.error(errorMessage)
             });
-
     }
+  
 
     return (
         <div>
@@ -113,7 +125,7 @@ const Register = () => {
                         </form>
 
                         <div className="flex justify-center">
-                            <button className="btn btn-neutral w-60 mx-auto"><FaGoogle size={20}></FaGoogle>Login with Google</button>
+                            <button onClick={handleGoogleLogin} className="btn btn-neutral w-60 mx-auto"><FaGoogle size={20}></FaGoogle>Login with Google</button>
                         </div>
 
                         <p className="p-6 text-center">Already Have An Account? Please <NavLink to="/login" className="underline text-red-500">Login</NavLink></p>

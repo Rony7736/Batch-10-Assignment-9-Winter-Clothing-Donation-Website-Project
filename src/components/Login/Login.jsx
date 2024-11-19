@@ -10,7 +10,7 @@ import auth from "../../Firebase/Firebase.config";
 
 const Login = () => {
 
-    const { setUser, handleLogin } = useContext(authContext)
+    const { setUser, handleLogin, handleGoogleLogin } = useContext(authContext)
 
     const [error, setError] = useState({})
     const [showPassword, setShowPassword] = useState(false)
@@ -108,7 +108,7 @@ const Login = () => {
                         </form>
 
                         <div className="flex justify-center">
-                            <button className="btn btn-neutral w-60 mx-auto"><FaGoogle size={20}></FaGoogle>Login with Google</button>
+                            <button onClick={handleGoogleLogin} className="btn btn-neutral w-60 mx-auto"><FaGoogle size={20}></FaGoogle>Login with Google</button>
                         </div>
                         <p className="p-6 text-center">New to the website? Please <NavLink to="/register" className="underline text-red-500">Register</NavLink></p>
 
