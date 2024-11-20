@@ -60,6 +60,13 @@ const Login = () => {
 
     }
 
+    const googleLoginHandler = ()=> {
+        handleGoogleLogin()
+        .then(res => {
+            navigate(location && "/")
+        })
+    }
+
     return (
         <div>
             <div className="hero bg-base-200 lg:py-20">
@@ -108,7 +115,7 @@ const Login = () => {
                         </form>
 
                         <div className="flex justify-center">
-                            <button onClick={handleGoogleLogin} className="btn btn-neutral w-60 mx-auto"><FaGoogle size={20}></FaGoogle>Login with Google</button>
+                            <button onClick={googleLoginHandler} className="btn btn-neutral w-60 mx-auto"><FaGoogle size={20}></FaGoogle>Login with Google</button>
                         </div>
                         <p className="p-6 text-center">New to the website? Please <NavLink to="/register" className="underline text-red-500">Register</NavLink></p>
 

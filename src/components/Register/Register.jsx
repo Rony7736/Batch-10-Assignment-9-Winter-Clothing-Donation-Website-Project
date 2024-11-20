@@ -30,19 +30,19 @@ const Register = () => {
         const email = form.get("email")
         const image = form.get("image")
         const password = form.get("password")
-         // console.log({name, email, image, password});
+        // console.log({name, email, image, password});
 
-        if(password.length < 6){
+        if (password.length < 6) {
             toast.error("Password should be 6 characters or longer")
             return
         }
 
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).+$/;
-        if(!passwordRegex.test(password)){
+        if (!passwordRegex.test(password)) {
             toast.error("Password at least one uppercase and one lowercase")
             return
         }
-       
+
 
         handleRegister(email, password)
             .then(result => {
@@ -63,7 +63,15 @@ const Register = () => {
                 toast.error(errorMessage)
             });
     }
-  
+
+        const googleLoginHandler = () =>{
+            handleGoogleLogin()
+            .then(res => {
+                navigate(location && "/")
+            })
+        }
+
+
 
     return (
         <div>
@@ -125,7 +133,7 @@ const Register = () => {
                         </form>
 
                         <div className="flex justify-center">
-                            <button onClick={handleGoogleLogin} className="btn btn-neutral w-60 mx-auto"><FaGoogle size={20}></FaGoogle>Login with Google</button>
+                            <button onClick={googleLoginHandler} className="btn btn-neutral w-60 mx-auto"><FaGoogle size={20}></FaGoogle>Login with Google</button>
                         </div>
 
                         <p className="p-6 text-center">Already Have An Account? Please <NavLink to="/login" className="underline text-red-500">Login</NavLink></p>

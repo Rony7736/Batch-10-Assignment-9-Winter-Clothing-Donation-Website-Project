@@ -1,4 +1,5 @@
 
+import logo from "../assets/logo.png"
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { authContext } from "../AuthProvider/AuthProvider";
@@ -31,7 +32,10 @@ const Navbar = () => {
                         <NavLink to="/dashboard" className={({ isActive }) => `text-base ${isActive ? 'text-warning font-bold' : 'hover:text-warning'}`}><li>Dashboard</li></NavLink>
                     </ul>
                 </div>
-                <NavLink to="/" className="btn btn-ghost text-2xl">Winter Clothing  Donation</NavLink>
+                <div className="flex items-center">
+                    
+                    <NavLink to="/" className="btn btn-ghost text-2xl"> <img className="w-16 h-14" src={logo} alt="" />Winter Clothing  Donation</NavLink>
+                </div>
             </div>
 
             <div className="navbar-center hidden lg:flex">
@@ -49,14 +53,14 @@ const Navbar = () => {
                 }
 
                 {
-                    user && user?.email ? 
-                    <button onClick={logOut} className="btn btn-neutral rounded-none">Logout</button> 
-                    : 
-                    <NavLink to='/login' className="btn btn-neutral rounded-none">Login</NavLink>
+                    user && user?.email ?
+                        <button onClick={logOut} className="btn btn-neutral rounded-none">Logout</button>
+                        :
+                        <NavLink to='/login' className="btn btn-neutral rounded-none">Login</NavLink>
                 }
 
-                
-                
+
+
             </div>
         </div>
     );
