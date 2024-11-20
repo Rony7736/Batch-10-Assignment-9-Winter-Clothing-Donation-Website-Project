@@ -21,6 +21,10 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        //  error status
+        setError("")
+
         const form = new FormData(e.target)
         const name = form.get("name")
         if (name.length < 4) {
@@ -33,12 +37,14 @@ const Register = () => {
         // console.log({name, email, image, password});
 
         if (password.length < 6) {
+            setError({ ...error, login: "Password should be 6 characters or longer" })
             toast.error("Password should be 6 characters or longer")
             return
         }
 
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).+$/;
         if (!passwordRegex.test(password)) {
+            setError({ ...error, login: "Password at least one uppercase and one lowercase" })
             toast.error("Password at least one uppercase and one lowercase")
             return
         }
@@ -58,10 +64,12 @@ const Register = () => {
                         console.log(err)
                     })
             })
-            .catch((error) => {
-                const errorMessage = error.message;
+            .catch((err) => {
+                const errorMessage = err.message;
+                setError({ ...error, login: err.message })
                 toast.error(errorMessage)
             });
+
     }
 
     const googleLoginHandler = () => {
@@ -124,6 +132,13 @@ const Register = () => {
                                         showPassword ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>
                                     }
                                 </button>
+
+                                {
+                                    error.login && (
+                                        <label className="label text-sm text-red-600">
+                                            {error.login}
+                                        </label>)
+                                }
                             </div>
 
                             <div className="form-control mt-6">

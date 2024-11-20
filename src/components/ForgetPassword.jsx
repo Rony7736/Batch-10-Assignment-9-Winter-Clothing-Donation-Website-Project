@@ -1,15 +1,18 @@
 
 import { sendPasswordResetEmail } from "firebase/auth";
 import auth from "../Firebase/Firebase.config";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ForgetPassword = () => {
 
     const emailRef = useRef()
     const navigate = useNavigate()
+    const location = useLocation();
+    const [email, setEmail] = useState("");
 
+ 
     const handleSubmit = async (e) => {
         e.preventDefault()
         const email = e.target.email.value

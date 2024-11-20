@@ -5,8 +5,6 @@ import { authContext } from "../../AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
 
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
-// import { sendPasswordResetEmail } from "firebase/auth";
-// import auth from "../../Firebase/Firebase.config";
 
 const Login = () => {
 
@@ -31,6 +29,7 @@ const Login = () => {
         // reset error status
         setError("")
 
+        
         handleLogin(email, password)
             .then(result => {
                 const user = result.user
