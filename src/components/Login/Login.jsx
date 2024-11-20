@@ -5,8 +5,8 @@ import { authContext } from "../../AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
 
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
-import { sendPasswordResetEmail } from "firebase/auth";
-import auth from "../../Firebase/Firebase.config";
+// import { sendPasswordResetEmail } from "firebase/auth";
+// import auth from "../../Firebase/Firebase.config";
 
 const Login = () => {
 
@@ -21,7 +21,7 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        
+
 
         const form = new FormData(e.target)
         const email = form.get("email")
@@ -45,26 +45,16 @@ const Login = () => {
             });
     }
 
-    const handleForgetPassword = () => {
-        // console.log("get me email", emailRef.current.value)
-        const email = emailRef.current.value
-        if (!email){
-            toast.error("Please Provide a Valid Email Address")
-        }
-        else{
-            sendPasswordResetEmail(auth, email)
-            .then(()=> {
-                toast.success("Password Reset email Sent, Please check your email")
+    const googleLoginHandler = () => {
+        handleGoogleLogin()
+            .then(res => {
+                navigate(location && "/")
             })
-        }
-
     }
 
-    const googleLoginHandler = ()=> {
-        handleGoogleLogin()
-        .then(res => {
-            navigate(location && "/")
-        })
+    // reset password
+    const handleReset = () => {
+        navigate("/reset")
     }
 
     return (
@@ -90,7 +80,7 @@ const Login = () => {
                                 </label>
                                 <input type={showPassword ? "text" : "password"}
                                     placeholder="password" name="password" className="input input-bordered" required />
-                                <button onClick={() => setShowPassword(!showPassword)}  type="submit" className=" btn-xs absolute right-4 top-12">
+                                <button onClick={() => setShowPassword(!showPassword)} type="submit" className=" btn-xs absolute right-4 top-12">
                                     {
                                         showPassword ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>
                                     }
@@ -103,7 +93,7 @@ const Login = () => {
                                         </label>)
                                 }
 
-                                <label onClick={handleForgetPassword} className="label">
+                                <label onClick={handleReset} className="label">
                                     <a href="#" className="label-text-alt text-red-600 text-sm link link-hover">Forgot password?</a>
                                 </label>
                             </div>

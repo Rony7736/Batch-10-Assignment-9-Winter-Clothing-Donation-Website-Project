@@ -22,7 +22,7 @@ const Dashboard = () => {
 
                     </figure>
                     <div className="card-body">
-                        <h2 className="card-title">User Name: {user.displayName}</h2>
+                        <h2 className="card-title">User Name: {user?.displayName}</h2>
                         <p>User Email: {user?.email}</p>
                         <div className="card-actions justify-end">
                             <NavLink to="/updateprofile">

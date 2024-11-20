@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
 import { authContext } from "../AuthProvider/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UpdateProfile = () => {
 
-    const { user, updateUSerProfile } = useContext(authContext)
+    const { updateUSerProfile } = useContext(authContext)
     
 
     const [photoURL, setPhotoURL] = useState("");
@@ -18,12 +19,12 @@ const UpdateProfile = () => {
 
         updateUSerProfile({photoURL, displayName})
         .then(() => {
-            alert("Profile updated successfully!");
+            toast.success("Profile updated successfully!");
             navigate("/dashboard"); 
           })
           .catch((error) => {
             console.error("Error updating profile:", error);
-            alert("Failed to update profile. Please try again.");
+            toast.error("Failed to update profile. Please try again.");
           });
     };
 

@@ -12,6 +12,7 @@ import Login from "../components/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import Error from "../Pages/Error";
 import UpdateProfile from "../components/UpdateProfile";
+import ForgetPassword from "../components/ForgetPassword";
 // import { WOW } from 'wowjs';
 
 
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: "/updateprofile",
         element: <UpdateProfile></UpdateProfile>
+      },
+      {
+        path: "/reset",
+        element: <ForgetPassword></ForgetPassword>
       },
 
     ]
