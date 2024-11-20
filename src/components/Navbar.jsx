@@ -33,8 +33,8 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="flex items-center">
-                    
-                    <NavLink to="/" className="btn btn-ghost text-2xl"> <img className="w-16 h-14" src={logo} alt="" />Winter Clothing  Donation</NavLink>
+                    <img className="w-16 h-14 hidden md:block" src={logo} alt="" />
+                    <NavLink to="/" className="btn btn-ghost text-2xl"> Winter Clothing  Donation</NavLink>
                 </div>
             </div>
 

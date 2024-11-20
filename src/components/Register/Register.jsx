@@ -64,12 +64,12 @@ const Register = () => {
             });
     }
 
-        const googleLoginHandler = () =>{
-            handleGoogleLogin()
+    const googleLoginHandler = () => {
+        handleGoogleLogin()
             .then(res => {
                 navigate(location && "/")
             })
-        }
+    }
 
 
 

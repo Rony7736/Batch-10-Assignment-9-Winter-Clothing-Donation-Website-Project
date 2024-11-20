@@ -10,6 +10,8 @@ import 'animate.css';
 import Register from "../components/Register/Register";
 import Login from "../components/Login/Login";
 import PrivateRoute from "./PrivateRoute";
+import Error from "../Pages/Error";
+import UpdateProfile from "../components/UpdateProfile";
 // import { WOW } from 'wowjs';
 
 
@@ -17,6 +19,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -33,7 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
       },
       {
         path: "/details/:id",
@@ -56,6 +59,11 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login></Login>
       },
+      {
+        path: "/updateprofile",
+        element: <UpdateProfile></UpdateProfile>
+      },
+
     ]
   },
 ]);

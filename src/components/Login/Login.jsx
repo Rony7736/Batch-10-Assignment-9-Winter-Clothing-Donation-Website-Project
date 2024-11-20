@@ -90,7 +90,7 @@ const Login = () => {
                                 </label>
                                 <input type={showPassword ? "text" : "password"}
                                     placeholder="password" name="password" className="input input-bordered" required />
-                                <button onClick={() => setShowPassword(!showPassword)} className=" btn-xs absolute right-4 top-12">
+                                <button onClick={() => setShowPassword(!showPassword)}  type="submit" className=" btn-xs absolute right-4 top-12">
                                     {
                                         showPassword ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>
                                     }
