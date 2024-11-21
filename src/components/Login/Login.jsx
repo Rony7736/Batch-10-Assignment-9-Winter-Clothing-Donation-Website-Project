@@ -1,6 +1,6 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import login from "../../assets/login.avif"
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { authContext } from "../../AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
 
@@ -8,11 +8,14 @@ import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 
 const Login = () => {
 
-    const { setUser, handleLogin, handleGoogleLogin } = useContext(authContext)
+    const { setUser, handleLogin, handleGoogleLogin, setEmail } = useContext(authContext)
 
     const [error, setError] = useState({})
     const [showPassword, setShowPassword] = useState(false)
-    const emailRef = useRef()
+
+    // update email
+    const [emailInput, setEmailInput] = useState("")
+
 
     const location = useLocation()
     const navigate = useNavigate()
@@ -29,7 +32,7 @@ const Login = () => {
         // reset error status
         setError("")
 
-        
+
         handleLogin(email, password)
             .then(result => {
                 const user = result.user
@@ -53,7 +56,14 @@ const Login = () => {
 
     // reset password
     const handleReset = () => {
-        navigate("/reset")
+        // navigate("/reset")
+        if (emailInput) {
+            setEmail(emailInput); 
+            navigate("/reset");
+        }
+        else {
+            toast.error("Please enter your email");
+        }
     }
 
     return (
@@ -71,7 +81,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" placeholder="email" name="email" ref={emailRef} className="input input-bordered" required />
+                                <input type="email" placeholder="email" name="email" value={emailInput} onChange={(e) => setEmailInput(e.target.value)} className="input input-bordered" required />
                             </div>
                             <div className="form-control relative">
                                 <label className="label">
@@ -79,7 +89,7 @@ const Login = () => {
                                 </label>
                                 <input type={showPassword ? "text" : "password"}
                                     placeholder="password" name="password" className="input input-bordered" required />
-                                <button onClick={() => setShowPassword(!showPassword)} type="submit" className=" btn-xs absolute right-4 top-12">
+                                <button onClick={() => setShowPassword(!showPassword)} type="button" className=" btn-xs absolute right-4 top-12">
                                     {
                                         showPassword ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>
                                     }

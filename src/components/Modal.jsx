@@ -3,13 +3,13 @@ import { toast } from "react-toastify";
 
 const Modal = () => {
 
-    
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
     }
 
-    const handleClick = ()=> {
+    const handleClick = () => {
         toast.success("Thank you! We will reach your destination soon.!")
 
     }
@@ -40,6 +40,11 @@ const Modal = () => {
                         <label className="flex justify-around items-center">
                             <h2 className="text-purple-800 font-bold text-xl">Pickup Location</h2>
                             <input className="py-2 px-3 rounded-lg" type="text" placeholder="Exam: House 12, Road 5, Dhanmondi, Dhaka" required />
+                        </label>
+
+                        <label  className="flex justify-around items-center">
+                            <h2 className="text-purple-800 font-bold text-xl">Additional Notes</h2>
+                            <textarea  className="py-2 px-3 rounded-lg" placeholder="(Optional)" name="notes"/>
                         </label>
 
                     </form>

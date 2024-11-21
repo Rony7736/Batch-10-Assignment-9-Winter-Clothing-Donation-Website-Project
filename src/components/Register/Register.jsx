@@ -61,7 +61,7 @@ const Register = () => {
                         navigate("/")
                     })
                     .catch(err => {
-                        console.log(err)
+                        setError(err)
                     })
             })
             .catch((err) => {
@@ -127,7 +127,7 @@ const Register = () => {
                                 </label>
                                 <input type={showPassword ? "text" : "password"}
                                     placeholder="Password" name="password" className="input input-bordered" required />
-                                <button onClick={() => setShowPassword(!showPassword)} className=" btn-xs absolute right-4 top-12">
+                                <button onClick={() => setShowPassword(!showPassword)} type="button" className=" btn-xs absolute right-4 top-12">
                                     {
                                         showPassword ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>
                                     }

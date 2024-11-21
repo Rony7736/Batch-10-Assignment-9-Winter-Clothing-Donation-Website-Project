@@ -1,16 +1,19 @@
 
 import { sendPasswordResetEmail } from "firebase/auth";
 import auth from "../Firebase/Firebase.config";
-import { useRef, useState } from "react";
+import { useContext } from "react";
 import { toast } from "react-toastify";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { authContext } from "../AuthProvider/AuthProvider";
 
 const ForgetPassword = () => {
 
-    const emailRef = useRef()
+    const {email} = useContext(authContext)
+
+
     const navigate = useNavigate()
-    const location = useLocation();
-    const [email, setEmail] = useState("");
+
+    // console.log(location);
 
  
     const handleSubmit = async (e) => {
@@ -36,7 +39,7 @@ const ForgetPassword = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="email" placeholder="email" name="email" ref={emailRef} className="input input-bordered" required />
+                        <input type="email" placeholder="email" name="email" value={email} className="input input-bordered" required />
                     </div>
                     <div className="form-control mt-6">
                         <button className="btn btn-neutral">Reset</button>

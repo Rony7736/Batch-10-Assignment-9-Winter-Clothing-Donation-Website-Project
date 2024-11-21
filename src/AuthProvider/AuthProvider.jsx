@@ -8,6 +8,8 @@ export const authContext = createContext()
 const AuthProvider = ({ children }) => {
 
     const googleProvider = new GoogleAuthProvider();
+    // email update
+    const [email, setEmail] = useState("")
 
     // step 1
     const [user, setUser] = useState(null)
@@ -44,6 +46,8 @@ const AuthProvider = ({ children }) => {
     }
 
     const authInfo = {
+        email,
+        setEmail,
         user,
         setUser,
         handleRegister,

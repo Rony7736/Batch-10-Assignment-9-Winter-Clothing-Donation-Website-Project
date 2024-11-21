@@ -23,8 +23,8 @@ const UpdateProfile = () => {
             navigate("/dashboard"); 
           })
           .catch((error) => {
-            console.error("Error updating profile:", error);
-            toast.error("Failed to update profile. Please try again.");
+            // console.error("Error updating profile:", error);
+            toast.error("Failed to update profile. Please try again." , error);
           });
     };
 
