@@ -13,7 +13,7 @@ const Login = () => {
     const [error, setError] = useState({})
     const [showPassword, setShowPassword] = useState(false)
 
-    // update email
+    // update email state
     const [emailInput, setEmailInput] = useState("")
 
 
